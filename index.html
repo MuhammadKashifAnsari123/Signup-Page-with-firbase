@@ -33,21 +33,23 @@
     </style>
 </head>
 <body>
+
+    
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row w-100">
             <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto signup-container">
                 <h1 class="signup-header text-center">SignUp</h1>
                 <div class="mb-3">
-                    <input class="form-control signup-input" type="text" id="UserName" placeholder="UserName">
+                    <input class="form-control signup-input" type="text" id="UserName" placeholder="UserName" required>
                 </div>
                 <div class="mb-3">
-                    <input class="form-control signup-input" type="email" id="email" placeholder="Email">
+                    <input class="form-control signup-input" type="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
-                    <input class="form-control signup-input" type="text" id="password" placeholder="Password">
+                    <input class="form-control signup-input" type="text" id="password" placeholder="Password" required>
                 </div>
                 <div class="d-grid">
-                    <button onclick="sigupUser()" class="btn btn-primary signup-btn">Submit</button>
+                    <button id="yourButtonId" onclick="sigupUser()" class="btn btn-primary signup-btn">Submit</button>
                 </div>
 
                 <a href="./login.html" class="text-decoration-none" style="color: #1877f2;">login</a>
@@ -55,6 +57,8 @@
             </div>
         </div>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.1/sweetalert2.min.js" integrity="sha512-Ozu7Km+muKCuIaPcOyNyW8yOw+KvkwsQyehcEnE5nrr0V4IuUqGZUKJDavjSCAA/667Dt2z05WmHHoVVb7Bi+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

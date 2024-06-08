@@ -36,14 +36,21 @@ window.sigupUser = function () {
         email: email.value,
         password: password.value
     }
-    UserName.value = '',
-    email.value = '',
-    password.value = ''
+
+    if (!obj.UserName || !obj.email || !obj.password) {
+        Swal.fire({
+            title: "All fields are required!",
+            text: "Please fill in all fields.",
+            icon: "warning"
+        });
+        return; // Stop the function execution if any field is empty
+    }
+
+    UserName.value = '';
+    email.value = '';
+    password.value = '';
     console.log(obj);
 
-
-    // var reference = ref(db,"tasks");
-    // push(reference, obj);
     createUserWithEmailAndPassword(auth, obj.email, obj.password)
     .then(function (res){       
         console.log(res);
@@ -52,34 +59,22 @@ window.sigupUser = function () {
         push(reference, obj)
         .then(function (dbRes){
             console.log(dbRes)
-            
         })
-        
         .catch(function (dbErr){
             console.log(dbErr)
-        })
+        });
         Swal.fire({
-            title: "your accound created!",
+            title: "Your account has been created!",
             text: "You clicked the button!",
             icon: "success"
-          });
-        
+        });
     })
     .catch(function (err){
          console.log(err.message);
         Swal.fire({
             title: "You are already registered!",
             text: "You clicked the button!",
-            icon: " success"
-          });
+            icon: "error"
+        });
     });
 };
-
-// function getData() {
-//     const reference = ref(db,"tasks/");
-//     onValue(reference, function (taskData){
-//         console.log(taskData.val());
-//     })
-// }
-
-// getData();

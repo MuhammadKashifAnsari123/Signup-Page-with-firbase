@@ -32,41 +32,49 @@ var password = document.getElementById('password');
 
 
 window.userLogin = function () {
-    var obj = {
-        email: email.value,
-        password: password.value,
-    }
-    email.value = '',
-    password.value = '',
+  var obj = {
+      email: email.value,
+      password: password.value,
+  }
 
-    signInWithEmailAndPassword(auth, obj.email, obj.password)
-    .then(function (res){
-        console.log(res);
-        var id = res.user.uid
-        console.log(id);
-        var reference = ref(db, `tasks/${id}`);
-        console.log(reference);
-        onValue(reference, function(data){
+  if (!obj.email || !obj.password) {
+      Swal.fire({
+          title: "All fields are required!",
+          text: "Please fill in all fields.",
+          icon: "warning"
+      });
+      return; // Stop the function execution if any field is empty
+  }
+
+  email.value = '';
+  password.value = '';
+
+  signInWithEmailAndPassword(auth, obj.email, obj.password)
+  .then(function (res){
+      console.log(res);
+      var id = res.user.uid;
+      console.log(id);
+      var reference = ref(db, `tasks/${id}`);
+      console.log(reference);
+      onValue(reference, function(data){
           console.log(onValue);
-           var allData = data.val();
-            console.log(allData);
-        })
-        Swal.fire({
-            title: "Your are Login Successfully!",
-            text: "You clicked the button!",
-            icon: "success"
-          });
-        
-    })
-    .catch(function (err){
-        console.log(err.message);
-        Swal.fire({
-            title: "Invalid Email And Password!",
-            text: "You clicked the button!",
-            icon: "success"
-          });
-    });
-    
+          var allData = data.val();
+          console.log(allData);
+      });
+      Swal.fire({
+          title: "You have logged in successfully!",
+          text: "You clicked the button!",
+          icon: "success"
+      });
+  })
+  .catch(function (err){
+      console.log(err.message);
+      Swal.fire({
+          title: "Invalid Email and Password!",
+          text: "Please check your credentials.",
+          icon: "error"
+      });
+  });
 }
 
 
