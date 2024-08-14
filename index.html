@@ -8,57 +8,97 @@
     <style>
         body {
             background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .signup-container {
             margin-top: 50px;
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .signup-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         .signup-header {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-size: 2rem;
+            font-weight: 600;
             color: #1877f2;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
         }
         .signup-input {
-            height: 50px;
-            font-size: 1.2rem;
+            height: 45px;
+            font-size: 1rem;
+            border-radius: 5px;
         }
         .signup-btn {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             height: 50px;
+            border-radius: 5px;
+            background-color: #1877f2;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .signup-btn:hover {
+            background-color: #145dbf;
+        }
+        .login-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1rem;
+            color: #1877f2;
+            text-decoration: none;
+        }
+        .login-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 576px) {
+            .signup-container {
+                padding: 20px;
+            }
+            .signup-header {
+                font-size: 1.5rem;
+            }
+            .signup-btn {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="row w-100">
-            <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto signup-container">
-                <h1 class="signup-header text-center">SignUp</h1>
-                <div class="mb-3">
-                    <input class="form-control signup-input" type="text" id="UserName" placeholder="UserName" required>
+    <div id="auth_container">
+        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+            <div class="row w-100">
+                <div class="col-lg-6 col-md-8 col-sm-10 col-12 mx-auto signup-container">
+                    <h1 class="signup-header">Create Your Account</h1>
+                    <div class="mb-3">
+                        <input class="form-control signup-input" type="text" id="UserName" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control signup-input" type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control signup-input" type="password" id="password" placeholder="Password" required autocomplete="new-password">
+                    </div>
+                    <div class="d-grid">
+                        <button id="sigupUser" class="btn signup-btn">Sign Up</button>
+                    </div>
+                    <a href="./login.html" class="login-link">Already have an account? Login</a>
                 </div>
-                <div class="mb-3">
-                    <input class="form-control signup-input" type="email" id="email" placeholder="Email" required>
-                </div>
-                <div class="mb-3">
-                    <input class="form-control signup-input" type="text" id="password" placeholder="Password" required>
-                </div>
-                <div class="d-grid">
-                    <button id="yourButtonId" onclick="sigupUser()" class="btn btn-primary signup-btn">Submit</button>
-                </div>
-
-                <a href="./login.html" class="text-decoration-none" style="color: #1877f2;">login</a>
-
             </div>
         </div>
     </div>
 
-
+    <div id="user_container" class="container d-flex justify-content-center align-items-center min-vh-100" style="display: none;">
+        <div class="text-center">
+            <h1 id="user_email"></h1>
+            <button id="Logout_Btn" class="btn btn-danger mt-3">Logout</button>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.1/sweetalert2.min.js" integrity="sha512-Ozu7Km+muKCuIaPcOyNyW8yOw+KvkwsQyehcEnE5nrr0V4IuUqGZUKJDavjSCAA/667Dt2z05WmHHoVVb7Bi+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
